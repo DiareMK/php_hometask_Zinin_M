@@ -4,7 +4,11 @@
 
     require_once __DIR__.'/../../vendor/autoload.php';
 
-
+include 'params.php';
+$params = get_defined_vars();
+$latte = new Latte\Engine;
+$latte->setTempDirectory('temp');
+$latte->render('index.tpl', $params);
     use Phpcourse\Myproject\Classes\Controllers\AboutController;
     use Phpcourse\Myproject\Classes\Controllers\LoginController;
     use Phpcourse\Myproject\Classes\Controllers\ContactsController;
@@ -19,7 +23,6 @@
     use Phpcourse\Myproject\Classes\StartApplication;
 
     $router = new Router();
-
     $router->addRoute('/', HomeController::class, ControllerMethodName::METHOD_NAME);
     $router->addRoute('/home', HomeController::class, ControllerMethodName::METHOD_NAME);
     $router->addRoute('/about', AboutController::class, ControllerMethodName::METHOD_NAME);
@@ -38,4 +41,8 @@
     $app = new StartApplication($router, $_SERVER['REQUEST_URI'] ?? '/');
 
     $app->run();
+
+
+
+
 
