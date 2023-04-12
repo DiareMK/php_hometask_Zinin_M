@@ -2,7 +2,7 @@
 
 use Latte\Runtime as LR;
 
-/** source: index.tpl */
+/** source: index.latte */
 final class Templateebec5080a9 extends Latte\Runtime\Template
 {
 
